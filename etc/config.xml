@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <autocustomergroup>
+            <ukvat>
+                <enabled>0</enabled>
+                <frontendprompt>UK and Isle of Man VAT Registered Businesses, please enter your UK VAT Number (including Country Code), so we can apply the correct rate of VAT to your order.</frontendprompt>
+                <validate_online>0</validate_online>
+                <registrationnumber></registrationnumber>
+                <environment>sandbox</environment>
+                <importthreshold>135</importthreshold>
+                <usemagentoexchangerate>1</usemagentoexchangerate>
+                <exchangerate>1</exchangerate>
+                <domestic>0</domestic>
+                <intraeub2b>0</intraeub2b>
+                <intraeub2c>0</intraeub2c>
+                <importb2b>0</importb2b>
+                <importtaxed>0</importtaxed>
+                <importuntaxed>0</importuntaxed>
+            </ukvat>
+         </autocustomergroup>
+    </default>
+</config>
