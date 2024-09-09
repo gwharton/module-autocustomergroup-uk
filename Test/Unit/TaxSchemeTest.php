@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Directory\Model\CurrencyFactory;
-use Gw\AutoCustomerGroup\Api\Data\TaxIdCheckResponseInterface;
 use Gw\AutoCustomerGroup\Api\Data\TaxIdCheckResponseInterfaceFactory;
 use Gw\AutoCustomerGroup\Model\TaxSchemeHelper;
 

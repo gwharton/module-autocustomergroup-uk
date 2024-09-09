@@ -1,4 +1,5 @@
 <?php
+
 namespace Gw\AutoCustomerGroupUk\Model;
 
 use GuzzleHttp\ClientFactory;
