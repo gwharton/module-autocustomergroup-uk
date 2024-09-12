@@ -5,37 +5,10 @@
             <group id="ukvat" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>UK VAT Scheme</label>
                 <comment><![CDATA[
-<div class="autocustomergroup-schemeoverview">
-<p>This Scheme applies to shipments being sent from anywhere in the world to the United Kingdom (UK) and Isle of Man (IM). Note special procedures
-    apply for shipments to Northern Ireland (NI, Part of UK)
-</p>
-<p>As of 1st January 2021, all sellers must collect UK VAT at the point of sale and remit to the UK HMRC.</p>
-<p>The module assumes the following rules :</p>
-<ul>
-    <li><b>Domestic</b> - For shipments wthin the UK/IM, normal UK VAT rules apply.</li>
-    <li><b>Intra-EU B2B</b> - For shipments from the EU to NI and the buyer presents a validated UK VAT
-        number, then the sale can be zero rated for UK VAT. Zero Rate notice to be included on Invoice.</li>
-    <li><b>Intra-EU B2C</b> - For shipments from the EU to NI and the buyer does not present a validated UK VAT
-        number UK VAT should be charged.</li>
-    <li><b>Import B2B</b> - For shipments from outside of the UK/IM to the UK/IM and the buyer presents a
-        validated UK VAT number, then VAT should not be charged. Reverse Charge notice to be included on Invoice.</li>
-    <li><b>Import Taxed</b> - For shipments from outside of the UK/IM to the UK/IM and the total goods value is equal to or below 135 GBP, then
-        VAT should be charged.</li>
-    <li><b>Import Untaxed</b> - For shipments from outside of the UK/IM to the UK/IM, if the total goods value is above 135 GBP, then VAT should
-        NOT be charged and instead will be collected at the UK/IM border along with any duties due.</li>
-</ul>
-<p>For the UK VAT Scheme, the following applies (This can be confirmed
-    <a href="https://www.gov.uk/guidance/vat-and-overseas-goods-sold-directly-to-customers-in-the-uk#goods-that-are-outside-the-uk-at-the-point-of-sal"
-    target="_blank">here</a>) :</p>
-<ul>
-    <li>Total Goods value is the sum of the sale price of all items sold (including any discounts)</li>
-    <li>When determining whether VAT should be charged (VAT Threshold) Shipping or Insurance Costs are not included in the value of the goods.</li>
-    <li>When determining the amount of VAT to charge the Goods value does include Shipping and Insurance Costs.</li>
-</ul>
-<p>More information on the scheme can be found on the
-    <a href="https://www.gov.uk/guidance/vat-and-overseas-goods-sold-directly-to-customers-in-the-uk" target="_blank">UK Government Website</a></p>
-<p>If the customer enters a valid format UK VAT number at checkout, the number will be validated with the UK HMRC VAT Number checker service.</p>
-</div>
+                    <div>
+                        <p>For a detailed description of the configuration options below, please consult the <a href="https://github.com/gwharton/module-autocustomergroup-uk" target="_blank">
+                            UK VAT Scheme Addon Module homepage on Github</a>.</p>
+                    </div>
                     ]]></comment>
                 <depends>
                     <field id="autocustomergroup/general/enabled">1</field>
@@ -53,13 +26,6 @@
                 <field id="validate_online" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Validate Online</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment>
-                        <![CDATA[
-                        <ul>
-                        <li>Yes : VAT number is checked with the UK HMRC Online VAT Number Checking Service.</li>
-                        <li>No : Only the format of the VAT Number is checked.</li>
-                        </ul>
-                        ]]></comment>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
@@ -93,11 +59,6 @@
                 </field>
                 <field id="exchangerate" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Exchange Rate</label>
-                    <comment>
-                        <![CDATA[
-                        The exchange rate to convert from GBP to Store Base Currency. It is recommended to use the UK HMRC exchange rates, which can be found on the
-                        <a href="https://www.gov.uk/government/collections/exchange-rates-for-customs-and-vat" target="_blank">HMRC Website</a>.
-                        ]]></comment>
                     <depends>
                         <field id="usemagentoexchangerate">0</field>
                         <field id="enabled">1</field>
@@ -105,7 +66,6 @@
                 </field>
                 <field id="importthresholdstorecurrency" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1">
                     <label>Import VAT Threshold (Store Base Currency)</label>
-                    <comment>The order value (ex VAT) above which no VAT should be charged. Calculated as the sum of all line items after discount ex Tax.</comment>
                     <frontend_model>UkVatImportThresholdStoreBaseCurrency</frontend_model>
                     <depends>
                         <field id="enabled">1</field>
@@ -114,7 +74,6 @@
                 <field id="domestic" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Customer Group - Domestic</label>
                     <source_model>Gw\AutoCustomerGroup\Model\Config\Source\Group</source_model>
-                    <comment>Merchant Country is within the UK/IM, Item is being shipped to the UK/IM.</comment>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
@@ -122,7 +81,6 @@
                 <field id="intraeub2b" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Customer Group - Intra-EU B2B</label>
                     <source_model>Gw\AutoCustomerGroup\Model\Config\Source\Group</source_model>
-                    <comment>Merchant Country is within the EU, Item is being shipped to NI, Validated UK VAT Number Supplied.</comment>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
@@ -130,7 +88,6 @@
                 <field id="intraeub2c" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Customer Group - Intra-EU B2C</label>
                     <source_model>Gw\AutoCustomerGroup\Model\Config\Source\Group</source_model>
-                    <comment>Merchant Country is within the EU, Item is being shipped to NI, Validated UK VAT Number is NOT Supplied.</comment>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
@@ -138,7 +95,6 @@
                 <field id="importb2b" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Customer Group - Import B2B</label>
                     <source_model>Gw\AutoCustomerGroup\Model\Config\Source\Group</source_model>
-                    <comment>Merchant Country is not within the UK/IM, Item is being shipped to the UK/IM, Validated UK VAT Number Supplied.</comment>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
@@ -146,7 +102,6 @@
                 <field id="importtaxed" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Customer Group - Import Taxed</label>
                     <source_model>Gw\AutoCustomerGroup\Model\Config\Source\Group</source_model>
-                    <comment>Merchant Country is not within the UK/IM, Item is being shipped to the UKIM, Goods Value is below or equal to Import VAT Threshold.</comment>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
@@ -154,7 +109,6 @@
                 <field id="importuntaxed" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Customer Group - Import Untaxed</label>
                     <source_model>Gw\AutoCustomerGroup\Model\Config\Source\Group</source_model>
-                    <comment>Merchant Country is not within the UK/Isle of Man, Item is being shipped to the UK/Isle of Man, Goods Value is above the Import VAT Threshold.</comment>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
