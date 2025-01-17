@@ -33,8 +33,9 @@
 <h2>VAT Number Verification</h2>
 <ul>
 <li><b>Offline Validation</b> - A simple format validation is performed.</li>
-<li><b>Online Validation</b> - In addition to the offline checks above, an online validation check is performed with the UK HMRC VAT Checking Service.</li>
+<li><b>Online Validation</b> - In addition to the offline checks above, an online validation check is performed with the UK HMRC Check a UK VAT number Service.</li>
 </ul>
+<p>Credentials for the HMRC Check a UK VAT number API can be obtained by signing up on the <a href="https://developer.service.hmrc.gov.uk/developer/login" target="_blank">HMRC Developer Hub</a>. You will need to create an Application and request Access to the Check a UK VAT number API v2 in order to get the Client ID and Client Secret required to use the online checking service.</p>
 
 <h2>Pseudocode for group allocation</h2>
 <p>Groups are allocated by evaluating the following rules in this order (If a rule matches, no further rules are evaluated).</p>
@@ -52,8 +53,10 @@
 <ul>
 <li><b>Enabled</b> - Enable/Disable this Tax Scheme.</li>
 <li><b>Tax Identifier Field - Customer Prompt</b> - Displayed under the Tax Identifier field at checkout when a shipping country supported by this module is selected. Use this to include information to the user about why to include their Tax Identifier.</li>
-<li><b>Validate Online</b> - Whether to validate VAT numbers with the HMRC VAT Validation Service, or just perform simple format validation.</li>
-<li><b>Environment</b> - Whether to use the Sandbox or Production servers for the HMRC VAT Validation Service.</li>
+<li><b>Validate Online</b> - Whether to validate VAT numbers with the HMRC Check a UK VAT Number, or just perform simple format validation.</li>
+<li><b>Environment</b> - Whether to use the Sandbox or Production servers for the HMRC Check a UK VAT Number Service.</li>
+<li><b>Client ID</b> - Online credentials for the HMRC Check a UK VAT Number Service.</li>
+<li><b>Client Secret</b> - Online credentials for the HMRC Check a UK VAT Number Service.</li>
 <li><b>VAT Registration Number</b> - The UK VAT Registration Number for the Merchant. This will be provided to HMRC when all validation checks are made. Supplementary functions in AutoCustomerGroup may use this, for example displaying on invoices etc.</li>
 <li><b>Import VAT Threshold</b> - If the order value is above the VAT Threshold, no VAT should be charged. The threshold here should be in Scheme Currency.</li>
 <li><b>Use Magento Exchange Rate</b> - To convert from GBP Threshold to Store Currency Threshold, should we use the Magento Exchange Rate, or our own.</li>
@@ -67,5 +70,8 @@
 </ul>
 
 <h2>Integration Tests</h2>
-<p>No specific setup is required to run the integration tests.</p>
-
+<p>To run the integration tests, you need your own credentials for the HMRC Check a UK VAT Number API Sandbox. Please add them to config-global.php.</p>
+<ul>
+<li>autocustomergroup/uk_vat/clientid</li>
+<li>autocustomergroup/uk_vat/clientsecret</li>
+</ul>

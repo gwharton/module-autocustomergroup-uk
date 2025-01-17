@@ -38,6 +38,20 @@
                         <field id="enabled">1</field>
                     </depends>
                 </field>
+                <field id="clientid" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client ID</label>
+                    <depends>
+                        <field id="validate_online">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="clientsecret" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client Secret</label>
+                    <depends>
+                        <field id="validate_online">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
                 <field id="registrationnumber" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>VAT Registration Number</label>
                     <depends>

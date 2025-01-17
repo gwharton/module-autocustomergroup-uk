@@ -2,17 +2,14 @@
 
 namespace Gw\AutoCustomerGroupUk\Test\Unit;
 
-use GuzzleHttp\ClientFactory;
 use Gw\AutoCustomerGroupUk\Model\TaxScheme;
-use Magento\Framework\Serialize\Serializer\Json;
+use Gw\AutoCustomerGroupUk\SDK\HMRCConnector;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Directory\Model\CurrencyFactory;
 use Gw\AutoCustomerGroup\Api\Data\TaxIdCheckResponseInterfaceFactory;
-use Gw\AutoCustomerGroup\Model\TaxSchemeHelper;
 
 class TaxSchemeTest extends TestCase
 {
@@ -32,11 +29,6 @@ class TaxSchemeTest extends TestCase
     private $loggerMock;
 
     /**
-     * @var StoreManagerInterface|MockObject
-     */
-    private $storeManagerMock;
-
-    /**
      * @var CurrencyFactory|MockObject
      */
     private $currencyFactoryMock;
@@ -47,19 +39,9 @@ class TaxSchemeTest extends TestCase
     private $taxIdCheckResponseInterfaceFactoryMock;
 
     /**
-     * @var ClientFactory|MockObject
+     * @var HMRCConnector|MockObject
      */
-    private $clientFactoryMock;
-
-    /**
-     * @var Json|MockObject
-     */
-    private $jsonMock;
-
-    /**
-     * @var TaxSchemeHelper|MockObject
-     */
-    private $helperMock;
+    private $hmrcConnectorMock;
 
     protected function setUp(): void
     {
@@ -71,10 +53,6 @@ class TaxSchemeTest extends TestCase
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
 
-        $this->storeManagerMock = $this->getMockBuilder(StoreManagerInterface::class)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
         $this->currencyFactoryMock = $this->getMockBuilder(CurrencyFactory::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -83,27 +61,16 @@ class TaxSchemeTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->clientFactoryMock = $this->getMockBuilder(ClientFactory::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $this->jsonMock = $this->getMockBuilder(Json::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $this->helperMock = $this->getMockBuilder(TaxSchemeHelper::class)
+        $this->hmrcConnectorMock = $this->getMockBuilder(HMRCConnector::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $this->model = new TaxScheme(
             $this->scopeConfigMock,
             $this->loggerMock,
-            $this->storeManagerMock,
             $this->currencyFactoryMock,
             $this->taxIdCheckResponseInterfaceFactoryMock,
-            $this->clientFactoryMock,
-            $this->jsonMock,
-            $this->helperMock
+            $this->hmrcConnectorMock
         );
     }
 

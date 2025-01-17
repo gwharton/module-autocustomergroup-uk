@@ -8,6 +8,8 @@
                 <validate_online>0</validate_online>
                 <registrationnumber></registrationnumber>
                 <environment>sandbox</environment>
+                <clientid></clientid>
+                <clientsecret></clientsecret>
                 <importthreshold>135</importthreshold>
                 <usemagentoexchangerate>1</usemagentoexchangerate>
                 <exchangerate>1</exchangerate>
