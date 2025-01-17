@@ -72,6 +72,6 @@
 <h2>Integration Tests</h2>
 <p>To run the integration tests, you need your own credentials for the HMRC Check a UK VAT Number API Sandbox. Please add them to config-global.php.</p>
 <ul>
-<li>autocustomergroup/uk_vat/clientid</li>
-<li>autocustomergroup/uk_vat/clientsecret</li>
+<li>autocustomergroup/ukvat/clientid</li>
+<li>autocustomergroup/ukvat/clientsecret</li>
 </ul>
