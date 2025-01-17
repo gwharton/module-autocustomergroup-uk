@@ -306,7 +306,7 @@ class TaxScheme implements TaxSchemeInterface
                 $taxIdCheckResponse->setRequestDate($responseDto->processingDate);
                 $taxIdCheckResponse->setRequestIdentifier($responseDto->consultationNumber);
                 $taxIdCheckResponse->setRequestMessage(
-                    __('VAT Number validated with HMRC. (%1)', $responseDto->target->name)
+                    __('VAT Number validated with HMRC.')
                 );
             } else {
                 $responseDto = $response->dto();
