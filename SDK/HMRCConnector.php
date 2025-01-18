@@ -1,6 +1,7 @@
 <?php
 namespace Gw\AutoCustomerGroupUk\SDK;
 
+use Gw\AutoCustomerGroup\Model\Config\Source\Environment;
 use Gw\AutoCustomerGroupUk\SDK\Requests\GetVATRegistrationWithReference;
 use Gw\AutoCustomerGroupUk\SDK\Requests\GetVATRegistration;
 use Magento\Framework\App\CacheInterface;
@@ -70,7 +71,7 @@ class HMRCConnector extends Connector
         if ($this->scopeConfig->getValue(
             'autocustomergroup/ukvat/environment',
             ScopeInterface::SCOPE_STORE
-        ) === "sandbox") {
+        ) === Environment::ENVIRONMENT_SANDBOX) {
             return ("https://test-api.service.hmrc.gov.uk");
         } else {
             return ("https://api.service.hmrc.gov.uk");

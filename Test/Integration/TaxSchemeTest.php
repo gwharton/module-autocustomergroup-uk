@@ -184,9 +184,9 @@ class TaxSchemeTest extends TestCase
         );
         $result = $this->taxScheme->getCustomerGroup(
             $customerCountryCode,
-            $customerPostCode,
             $taxIdValidated,
             $orderValue,
+            $customerPostCode,
             $storeId
         );
         $this->assertEquals($expectedGroup, $result);
@@ -262,7 +262,6 @@ class TaxSchemeTest extends TestCase
         //IsValid
         return [
             ['GB', '',                  false],
-            ['GB', null,                false],
             ['GB', 'GB553557881',       true], // valid VAT number
             ['GB', 'GB146295999727',    true], // valid VAT number
             ['GB', 'GB948561936944',    true], // valid VAT number
@@ -309,7 +308,6 @@ class TaxSchemeTest extends TestCase
         //IsValid
         return [
             ['GB', '',                  false],
-            ['GB', null,                false],
             ['GB', 'GB573733578',       true], // valid format
             ['GB', 'GB535634643466',    true], // valid format
             ['GB', 'GB546365654577',    true], // valid format

@@ -93,17 +93,17 @@ class TaxScheme implements TaxSchemeInterface
      * Get customer group based on Validation Result and Country of customer
      *
      * @param string $customerCountryCode
-     * @param string|null $customerPostCode
      * @param bool $taxIdValidated
      * @param float $orderValue
+     * @param string|null $customerPostCode
      * @param int|null $storeId
      * @return int|null
      */
     public function getCustomerGroup(
         string $customerCountryCode,
-        ?string $customerPostCode,
         bool $taxIdValidated,
         float $orderValue,
+        ?string $customerPostCode,
         ?int $storeId
     ): ?int {
         $merchantCountry = $this->scopeConfig->getValue(
