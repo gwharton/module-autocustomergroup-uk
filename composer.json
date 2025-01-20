@@ -11,7 +11,9 @@
         "magento/module-store": "*",
         "psr/log": "*",
         "netresearch/jsonmapper": "*",
-        "saloonphp/saloon": "*"
+        "saloonphp/saloon": "*",
+        "ext-pcre": "*",
+        "ext-json": "*"
     },
     "config": {
         "sort-packages": true
