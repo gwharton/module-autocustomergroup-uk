@@ -1,9 +1,7 @@
 <?php
-namespace Gw\AutoCustomerGroupUk\SDK\Responses;
+namespace Gw\AutoCustomerGroupUk\SDK\Dto;
 
-use Saloon\Http\Response;
-
-class ErrorResponse extends Response
+class ErrorResponse
 {
     /**
      * @param string $code

@@ -1,10 +1,7 @@
 <?php
-namespace Gw\AutoCustomerGroupUk\SDK\Responses;
+namespace Gw\AutoCustomerGroupUk\SDK\Dto;
 
-use Gw\AutoCustomerGroupUk\SDK\Dto\Target;
-use Saloon\Http\Response;
-
-class GetVATRegistrationResponse extends Response
+class GetVATRegistrationResponse
 {
     /**
      * @param \Gw\AutoCustomerGroupUk\SDK\Dto\Target $code

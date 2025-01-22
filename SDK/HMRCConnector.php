@@ -2,8 +2,8 @@
 namespace Gw\AutoCustomerGroupUk\SDK;
 
 use Gw\AutoCustomerGroup\Model\Config\Source\Environment;
-use Gw\AutoCustomerGroupUk\SDK\Requests\GetVATRegistrationWithReference;
-use Gw\AutoCustomerGroupUk\SDK\Requests\GetVATRegistration;
+use Gw\AutoCustomerGroupUk\SDK\Requests\GetVATRegistrationWithReferenceRequest;
+use Gw\AutoCustomerGroupUk\SDK\Requests\GetVATRegistrationRequest;
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
@@ -91,7 +91,7 @@ class HMRCConnector extends Connector
     ): Response {
         $authenticator = $this->getAccessToken();
         $this->authenticate($authenticator);
-        $request = new GetVATRegistration(
+        $request = new GetVATRegistrationRequest(
             $targetVrn
         );
         return $this->send($request);
@@ -103,7 +103,7 @@ class HMRCConnector extends Connector
     ): Response {
         $authenticator = $this->getAccessToken();
         $this->authenticate($authenticator);
-        $request = new GetVATRegistrationWithReference(
+        $request = new GetVATRegistrationWithReferenceRequest(
             $targetVrn,
             $requesterVrn
         );

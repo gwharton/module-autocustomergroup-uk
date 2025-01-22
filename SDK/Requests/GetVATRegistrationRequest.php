@@ -2,35 +2,33 @@
 namespace Gw\AutoCustomerGroupUk\SDK\Requests;
 
 use Exception;
-use Gw\AutoCustomerGroupUk\SDK\Responses\ErrorResponse;
-use Gw\AutoCustomerGroupUk\SDK\Responses\GetVATRegistrationWithReferenceResponse;
+use Gw\AutoCustomerGroupUk\SDK\Dto\ErrorResponse;
+use Gw\AutoCustomerGroupUk\SDK\Dto\GetVATRegistrationResponse;
 use JsonMapper;
 use Saloon\Enums\Method;
 use Saloon\Http\Response;
 
-class GetVATRegistrationWithReference extends BaseRequest
+class GetVATRegistrationRequest extends BaseRequest
 {
     protected Method $method = Method::GET;
 
     /**
      * @param string $targetVrn
-     * @param string $requesterVrn
      */
     public function __construct(
-        public string $targetVrn,
-        public string $requesterVrn
+        public string $targetVrn
     ) {}
 
     public function resolveEndpoint(): string
     {
-        return "/organisations/vat/check-vat-number/lookup/{$this->targetVrn}/{$this->requesterVrn}";
+        return "/organisations/vat/check-vat-number/lookup/{$this->targetVrn}";
     }
 
-    public function createDtoFromResponse(Response $response): GetVATRegistrationWithReferenceResponse|ErrorResponse
+    public function createDtoFromResponse(Response $response): GetVATRegistrationResponse|ErrorResponse
     {
         $status = $response->status();
         $responseClass = match ($status) {
-            200 => GetVATRegistrationWithReferenceResponse::class,
+            200 => GetVATRegistrationResponse::class,
             400, 401, 403, 404, 500 => ErrorResponse::class,
             default => throw new Exception("Unhandled response status: {$status}")
         };
