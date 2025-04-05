@@ -113,8 +113,7 @@ class TaxScheme implements TaxSchemeInterface
         );
         if (empty($merchantCountry)) {
             $this->logger->critical(
-                "Gw/AutoCustomerGroupUk/Model/TaxScheme::getCustomerGroup() : " .
-                "Merchant country not set."
+                __METHOD__ . " Merchant country not set"
             );
             return null;
         }
@@ -285,7 +284,7 @@ class TaxScheme implements TaxSchemeInterface
         );
         if (empty($registrationNumber)) {
             $this->logger->critical(
-                "Gw/AutoCustomerGroupUk/Model/TaxScheme::checkTaxId() : UK Vat Registration Number not set."
+                __METHOD__ . " UK Vat Registration Number not set"
             );
             $taxIdCheckResponse->setRequestMessage(__('UK Vat Registration Number not set.'));
             $taxIdCheckResponse->setIsValid(false);
@@ -319,7 +318,7 @@ class TaxScheme implements TaxSchemeInterface
                     $taxIdCheckResponse->setIsValid(false);
                     $taxIdCheckResponse->setRequestMessage(__('There was an error checking the VAT number.'));
                     $this->logger->error(
-                        "Gw/AutoCustomerGroupUk/Model/TaxScheme::checkTaxId() : Request to Check VAT Number API failed.",
+                        __METHOD__ . " Request to Check VAT Number API failed",
                         [
                             'code' => $responseDto->code,
                             'message' => $responseDto->message
@@ -332,7 +331,7 @@ class TaxScheme implements TaxSchemeInterface
             $taxIdCheckResponse->setIsValid(false);
             $taxIdCheckResponse->setRequestMessage(__('A system error has occurred.'));
             $this->logger->critical(
-                "Gw/AutoCustomerGroupUk/Model/TaxScheme::checkTaxId() : Exception",
+                __METHOD__ . " Exception",
                 [
                     'message' => $e->getMessage()
                 ]
@@ -451,9 +450,12 @@ class TaxScheme implements TaxSchemeInterface
                 ->getAnyRate($websiteBaseCurrency);
             if (!$exchangerate) {
                 $this->logger->critical(
-                    "Gw/AutoCustomerGroupUk/Model/TaxScheme::getSchemeExchangeRate() : " .
-                    "No Magento Exchange Rate configured for " . self::SCHEME_CURRENCY . " to " .
-                    $websiteBaseCurrency . ". Using 1.0"
+                    __METHOD__ . " No Exchange Rate configured. Using 1.0",
+                    [
+                        'Scheme Currency' => self::SCHEME_CURRENCY,
+                        'Base Currency' => $websiteBaseCurrency,
+
+                    ]
                 );
                 $exchangerate = 1.0;
             }
