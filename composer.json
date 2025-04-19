@@ -5,7 +5,6 @@
     "require": {
         "gwharton/module-autocustomergroup": "*",
         "magento/framework": "*",
-        "magento/module-catalog": "*",
         "magento/module-directory": "*",
         "magento/module-quote": "*",
         "magento/module-store": "*",
@@ -14,6 +13,9 @@
         "saloonphp/saloon": "*",
         "ext-pcre": "*",
         "ext-json": "*"
+    },
+    "require-dev": {
+        "magento/module-catalog": "*"
     },
     "config": {
         "sort-packages": true
