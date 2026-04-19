@@ -11,7 +11,6 @@ use Saloon\Helpers\OAuth2\OAuthConfig;
 use Saloon\Http\Connector;
 use Saloon\Http\Response;
 use Saloon\Traits\OAuth2\ClientCredentialsGrant;
-use Saloon\Http\Auth\AccessTokenAuthenticator;
 
 class HMRCConnector extends Connector
 {
@@ -33,13 +32,13 @@ class HMRCConnector extends Connector
             self::CACHE_TAG
         );
         if ($data) {
-            return AccessTokenAuthenticator::unserialize($data);
+            return unserialize($data, ['allowed_classes' => true]);
         }
         //Get new token
         $accessTokenAuthenticator = $this->originalGetAccessToken();
         //Save token to cache
         $this->cache->save(
-            $accessTokenAuthenticator->serialize(),
+            serialize($accessTokenAuthenticator),
             self::CACHE_TAG,
             [self::CACHE_TAG],
             $accessTokenAuthenticator->getExpiresAt()->getTimestamp() - time()
